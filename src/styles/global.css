@@ -1,1 +1,25 @@
+/* Activa Tailwind v4 */
 @import "tailwindcss";
+
+/* Tu paleta/tema (v4 usa @theme en el CSS, no tailwind.config) */
+@theme {
+  --color-bg: #0b0f14;
+
+  --color-brand: #e11d48;
+  --color-brand-600: #be123c;
+
+  --color-ashes-50: #f5f7fa;
+  --color-ashes-100: #eaeef3;
+  --color-ashes-300: #c5cbd6;
+  --color-ashes-700: #1f2937;
+
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+/* Utilidad visual opcional para el fondo */
+body {
+  background-image:
+    radial-gradient(40% 60% at 80% 0%, rgba(225,29,72,0.12), transparent 60%),
+    radial-gradient(30% 40% at 0% 100%, rgba(255,255,255,0.05), transparent 60%);
+  font-family: var(--font-sans);
+}

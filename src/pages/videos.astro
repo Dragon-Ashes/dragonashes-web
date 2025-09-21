@@ -1,0 +1,20 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+<BaseLayout title="Vídeos · Dragon Ashes">
+  <h2 class="text-3xl font-bold mb-6">Vídeos</h2>
+  <p class="text-ashes-300 mb-6">Suscríbete a nuestro canal de YouTube.</p>
+
+  <!-- Cambia VIDEO_ID_X por IDs reales -->
+  <div class="grid md:grid-cols-2 gap-6">
+    <iframe class="aspect-video w-full rounded-xl border border-white/10"
+      src="https://www.youtube.com/embed/VIDEO_ID_1" title="YouTube video" allowfullscreen loading="lazy"></iframe>
+    <iframe class="aspect-video w-full rounded-xl border border-white/10"
+      src="https://www.youtube.com/embed/VIDEO_ID_2" title="YouTube video" allowfullscreen loading="lazy"></iframe>
+  </div>
+
+  <a href="https://www.youtube.com/@dragonashesofficial" target="_blank" rel="noopener"
+     class="inline-block mt-6 px-5 py-3 rounded-xl bg-brand hover:bg-brand-600 text-white font-semibold">
+     Abrir canal
+  </a>
+</BaseLayout>
