@@ -1,20 +1,35 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+const path = Astro.url.pathname;
+const cls = (href) =>
+  path === href
+    ? "text-white font-semibold"
+    : "text-ashes-300 hover:text-white";
 ---
-<BaseLayout title="Vídeos · Dragon Ashes">
-  <h2 class="text-3xl font-bold mb-6">Vídeos</h2>
-  <p class="text-ashes-300 mb-6">Suscríbete a nuestro canal de YouTube.</p>
+<nav class="sticky top-0 z-50 bg-bg/80 backdrop-blur border-b border-white/10">
+  <div class="container mx-auto px-4 h-14 flex items-center justify-between">
+    <a href="/" class="font-extrabold tracking-wide text-xl text-white">
+      Dragon <span class="text-brand">Ashes</span>
+    </a>
 
-  <!-- Cambia VIDEO_ID_X por IDs reales -->
-  <div class="grid md:grid-cols-2 gap-6">
-    <iframe class="aspect-video w-full rounded-xl border border-white/10"
-      src="https://www.youtube.com/embed/VIDEO_ID_1" title="YouTube video" allowfullscreen loading="lazy"></iframe>
-    <iframe class="aspect-video w-full rounded-xl border border-white/10"
-      src="https://www.youtube.com/embed/VIDEO_ID_2" title="YouTube video" allowfullscreen loading="lazy"></iframe>
+    <!-- Desktop -->
+    <div class="hidden md:flex items-center gap-6">
+      <a href="/" class={`transition ${cls("/")}`}>Inicio</a>
+      <a href="/equip" class={`transition ${cls("/equip")}`}>Equipo</a>
+      <a href="/calendari" class={`transition ${cls("/calendari")}`}>Calendario</a>
+      <a href="/videos" class={`transition ${cls("/videos")}`}>Vídeos</a>
+      <a href="/contacte" class={`transition ${cls("/contacte")}`}>Contacto</a>
+    </div>
+
+    <!-- Móvil -->
+    <details class="md:hidden relative">
+      <summary class={`cursor-pointer select-none ${cls(path)}`}>Menú</summary>
+      <div class="absolute right-0 mt-2 w-44 rounded-xl border border-white/10 bg-bg p-3 flex flex-col gap-2">
+        <a href="/" class={cls("/")}>Inicio</a>
+        <a href="/equip" class={cls("/equip")}>Equipo</a>
+        <a href="/calendari" class={cls("/calendari")}>Calendario</a>
+        <a href="/videos" class={cls("/videos")}>Vídeos</a>
+        <a href="/contacte" class={cls("/contacte")}>Contacto</a>
+      </div>
+    </details>
   </div>
-
-  <a href="https://www.youtube.com/@dragonashesofficial" target="_blank" rel="noopener"
-     class="inline-block mt-6 px-5 py-3 rounded-xl bg-brand hover:bg-brand-600 text-white font-semibold">
-     Abrir canal
-  </a>
-</BaseLayout>
+</nav>
