@@ -1,0 +1,41 @@
+---
+import Nav from "../components/Nav.astro";
+import "../styles/global.css";
+
+const {
+  title = "Dragon Ashes",
+  description = "Equipo de Beyblade X — España",
+} = Astro.props;
+---
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta name="theme-color" content="#0b0f14" />
+    <link rel="icon" href="/favicon.svg" />
+    <!-- Fuente Inter opcional -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  </head>
+  <body class="min-h-screen bg-bg text-ashes-50 antialiased">
+    <Nav />
+    <main class="container mx-auto px-4 py-10">
+      <slot />
+    </main>
+    <footer class="border-t border-white/10 py-8 text-sm text-ashes-300">
+      <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
+        <p>© {new Date().getFullYear()} Dragon Ashes · Beyblade X · España</p>
+        <div class="flex items-center gap-4">
+          <a class="hover:underline" href="https://www.instagram.com/dragonashesofficial/" target="_blank" rel="noopener">Instagram</a>
+          <a class="hover:underline" href="https://www.youtube.com/@dragonashesofficial" target="_blank" rel="noopener">YouTube</a>
+          <a class="hover:underline" href="https://bsky.app/profile/dragonashes.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

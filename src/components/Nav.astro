@@ -1,34 +1,37 @@
 ---
 const path = Astro.url.pathname;
-const cls = (href) =>
-  path === href
-    ? "text-white font-semibold"
-    : "text-ashes-300 hover:text-white";
+const active = "text-white font-semibold";
+const inactive = "text-ashes-300 hover:text-white";
+const isActive = (href) =>
+  path === href || (href !== "/" && path.startsWith(href + "/")) ? active : inactive;
 ---
-<nav class="sticky top-0 z-50 bg-bg/80 backdrop-blur border-b border-white/10">
-  <div class="container mx-auto px-4 h-14 flex items-center justify-between">
-    <a href="/" class="font-extrabold tracking-wide text-xl text-white">
-      Dragon <span class="text-brand">Ashes</span>
+<nav class="sticky top-0 z-50 bg-black/80 backdrop-blur border-b border-white/10">
+  <div class="container mx-auto px-4 h-16 flex items-center">
+    <!-- Logo (izquierda) -->
+    <a href="/" class="flex items-center gap-2 text-white font-extrabold text-xl">
+      <span class="inline-block w-3 h-3 rounded-sm bg-brand"></span> Dragon <span class="text-brand">Ashes</span>
     </a>
 
-    <!-- Desktop -->
-    <div class="hidden md:flex items-center gap-6">
-      <a href="/" class={`transition ${cls("/")}`}>Inicio</a>
-      <a href="/equip" class={`transition ${cls("/equip")}`}>Equipo</a>
-      <a href="/calendari" class={`transition ${cls("/calendari")}`}>Calendario</a>
-      <a href="/videos" class={`transition ${cls("/videos")}`}>Vídeos</a>
-      <a href="/contacte" class={`transition ${cls("/contacte")}`}>Contacto</a>
+    <!-- Grupo de enlaces pegado a la derecha -->
+    <div class="hidden md:flex items-center gap-6 ml-auto">
+      <a href="/sobre-nosotros" class={`transition ${isActive("/sobre-nosotros")}`}>Sobre nosotros</a>
+      <a href="/equipo"         class={`transition ${isActive("/equipo")}`}>Equipo</a>
+      <a href="/novedades"      class={`transition ${isActive("/novedades")}`}>Novedades</a>
+      <a href="/comunidad"      class={`transition ${isActive("/comunidad")}`}>Comunidad</a>
+      <a href="/redes"          class={`transition ${isActive("/redes")}`}>Redes</a>
+      <a href="/tienda"         class={`transition ${isActive("/tienda")}`}>Tienda</a>
     </div>
 
-    <!-- Móvil -->
-    <details class="md:hidden relative">
-      <summary class={`cursor-pointer select-none ${cls(path)}`}>Menú</summary>
-      <div class="absolute right-0 mt-2 w-44 rounded-xl border border-white/10 bg-bg p-3 flex flex-col gap-2">
-        <a href="/" class={cls("/")}>Inicio</a>
-        <a href="/equip" class={cls("/equip")}>Equipo</a>
-        <a href="/calendari" class={cls("/calendari")}>Calendario</a>
-        <a href="/videos" class={cls("/videos")}>Vídeos</a>
-        <a href="/contacte" class={cls("/contacte")}>Contacto</a>
+    <!-- Menú móvil (sin CTA) -->
+    <details class="md:hidden ml-auto">
+      <summary class="cursor-pointer text-ashes-300 hover:text-white">Menú</summary>
+      <div class="mt-3 flex flex-col gap-2 p-3 rounded-xl border border-white/10 bg-black/95">
+        <a href="/sobre-nosotros" class={isActive("/sobre-nosotros")}>Sobre nosotros</a>
+        <a href="/equipo"         class={isActive("/equipo")}>Equipo</a>
+        <a href="/novedades"      class={isActive("/novedades")}>Novedades</a>
+        <a href="/comunidad"      class={isActive("/comunidad")}>Comunidad</a>
+        <a href="/redes"          class={isActive("/redes")}>Redes</a>
+        <a href="/tienda"         class={isActive("/tienda")}>Tienda</a>
       </div>
     </details>
   </div>
