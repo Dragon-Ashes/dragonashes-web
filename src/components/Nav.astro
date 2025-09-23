@@ -8,10 +8,19 @@ const isActive = (href) =>
 <nav class="sticky top-0 z-50 bg-black/80 backdrop-blur border-b border-white/10">
   <div class="container mx-auto px-4 h-16 flex items-center">
     <!-- Logo (izquierda) -->
-    <a href="/" class="flex items-center gap-2 text-white font-extrabold text-xl">
-      <span class="inline-block w-3 h-3 rounded-sm bg-brand"></span> Dragon <span class="text-brand">Ashes</span>
+    <a href="/" class="flex items-center gap-3 text-white">
+      <img
+        src="/brand/logo-dragon-ashes.png"
+        alt="Dragon Ashes"
+        width="40" height="40"
+        class="h-10 w-auto select-none"
+        loading="eager" fetchpriority="high" draggable="false"
+      />
+      <span class="font-extrabold text-xl leading-none">
+        Dragon <span class="text-brand">Ashes</span>
+      </span>
     </a>
-
+    
     <!-- Grupo de enlaces pegado a la derecha -->
     <div class="hidden md:flex items-center gap-6 ml-auto">
       <a href="/sobre-nosotros" class={`transition ${isActive("/sobre-nosotros")}`}>Sobre nosotros</a>
